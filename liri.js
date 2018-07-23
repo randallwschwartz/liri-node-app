@@ -65,8 +65,8 @@ var runSpotify = function() {
     console.log("Spotify printing song: " + inputTerm + "." + '\n');
 
     console.log("Data:");
-    console.log(data); 
-    var songData = ("Artist: " + data.tracks.items[0].artist[0].name + '\n' + 
+//    console.log(data.tracks.items[0]); 
+    var songData = ("Artist: " + data.tracks.items[0].artists[0].name + '\n' + 
       "Album: " + data.tracks.items[0].album.name + '\n' +
       "Preview Here: " + data.tracks.items[0].preview_url + '\n' +
       "-------------------------" + '\n');
