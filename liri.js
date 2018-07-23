@@ -29,12 +29,22 @@ var runTwitter = function() {
 
       console.log("Tweets printing for " + params.screen_name + ":" + '\n');
 
+      var combinedTweets = [];
+
       for (i=0; i<tweets.length; i++) {
-        var tweetData = ('Number: ' + (i+1) + '\n' + tweets[i].created_at + '\n' + tweets[i].text + '\n');
+        var tweetData = ('Number: ' + (i+1) + '\n' + 
+          tweets[i].created_at + '\n' + 
+          tweets[i].text + '\n' +
+          "-------------------------" + '\n');
         console.log(tweetData);
-        console.log("-------------------------");
-      }      
-    }
+        combinedTweets.push(tweetData);
+      };
+
+      // Append tweetData to log.txt
+      fs.appendFile("log.txt", combinedTweets, function(err) {
+        if (err) throw err;
+      });
+    };
   });  
 };
 
@@ -60,11 +70,15 @@ var runSpotify = function() {
     console.log(data); 
     var songData = ("Artist: " + data.tracks.items[0].artist[0].name + '\n' + 
       "Album: " + data.tracks.items[0].album.name + '\n' +
-      "Preview Here: " + data.tracks.items[0].preview_url);
+      "Preview Here: " + data.tracks.items[0].preview_url + '\n' +
+      "-------------------------" + '\n');
     console.log(songData);
-    console.log("-------------------------");
 
-
+    // Append songData to log.txt
+    fs.appendFile("log.txt", songData, function(err) {
+      if (err) throw err;
+    });
+    
   });
 }
 
@@ -77,9 +91,7 @@ var runMovie = function() {
   };
 
   var url = "http://www.omdbapi.com/?t=" + inputTerm + "&y=&plot=short&apikey=trilogy";
-  // var url = "http://www.omdbapi.com/?t=" + inputTerm + "&y=&plot=long&tomatoes=true&r=json";
-
-
+  
   request(url, function (error, response, body) {
 
     // If the request is successful
@@ -87,14 +99,22 @@ var runMovie = function() {
       // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
       // console.log('body:', body); 
 
-      console.log("Title: " + JSON.parse(body)["Title"]);
-      console.log("Year: " + JSON.parse(body)["Year"]);
-      console.log("IMDB Rating: " + JSON.parse(body)["imdbRating"]);
-      console.log("Rotten Tomatoes Rating: " + JSON.parse(body)["tomatoRating"]);
-      console.log("Country: " + JSON.parse(body)["Country"]);
-      console.log("Language: " + JSON.parse(body)["Language"]);
-      console.log("Plot: " + JSON.parse(body)["Plot"]);
-      console.log("Actors: " + JSON.parse(body)["Actors"]);
+      var movieData = ("Title: " + JSON.parse(body)["Title"] + '\n' +
+        "Year: " + JSON.parse(body)["Year"] + '\n' +
+        "IMDB Rating: " + JSON.parse(body)["imdbRating"] + '\n' +
+        "Rotten Tomatoes Rating: " + JSON.parse(body)["tomatoRating"] + '\n' +
+        "Country: " + JSON.parse(body)["Country"] + '\n' +
+        "Language: " + JSON.parse(body)["Language"] + '\n' +
+        "Plot: " + JSON.parse(body)["Plot"] + '\n' +
+        "Actors: " + JSON.parse(body)["Actors"] + '\n' +
+        "-------------------------" + '\n');
+
+      console.log(movieData);
+
+      // Append movieData to log.txt
+      fs.appendFile("log.txt", movieData, function(err) {
+        if (err) throw err;
+      });
 
     } else {
       console.log('error:', error); // Print the error if one occurred
