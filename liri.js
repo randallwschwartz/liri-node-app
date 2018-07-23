@@ -1,3 +1,9 @@
+// liri.js Homework by R. Schwartz
+//
+// Link to R. Schwartz portfolio at:
+//    https://randallwschwartz.github.io/Bootstrap-Portfolio/portfolio.html
+//
+
 require("dotenv").config();
 
 var keys = require("./keys.js");
@@ -13,12 +19,7 @@ console.log("Command: " + command + "\n" +
   "Input Term: " + inputTerm + "\n");
 
 var runTwitter = function() {
-  // var client = new Twitter({
-  //   consumer_key: '',
-  //   consumer_secret: '',
-  //   access_token_key: '',
-  //   access_token_secret: ''
-  // });
+
   var client = new Twitter(keys.twitter);
    
   var params = {screen_name: 'WSchwartz12', count: 20};
@@ -49,10 +50,7 @@ var runTwitter = function() {
 };
 
 var runSpotify = function() {
-  // var spotify = new Spotify({
-  //   id: "",
-  //   secret: ""
-  // });
+
   var spotify = new Spotify(keys.spotify);
    
   if (inputTerm === ""){
@@ -124,16 +122,45 @@ var runMovie = function() {
 
 }
 
+var runRandom = function() {
 
-if (command === "my-tweets"){
-  runTwitter();
-} else if (command === "spotify-this-song"){
-  runSpotify();
-} else if (command === "movie-this"){
-  runMovie();
-} else if (command === "do-what-it-says"){
+  console.log("Looking at random.txt file.");
 
-} else {
+  fs.readFile("random.txt", "utf8", function(error, data) {
+    if(error){
+      console.log(error);
+    }else{
+  
+      //split data, declare variables
+      var dataArr = data.split(',');
+      command = dataArr[0];
+      inputTerm = dataArr[1];
 
-};
+      //if multi-word search term, add.
+      for(i=2; i<dataArr.length; i++){
+        inputTerm = inputTerm + "+" + dataArr[i];
+      };
+    }
+
+    selectFunction();
+  });
+}
+
+var selectFunction = function(){
+
+  if (command === "my-tweets"){
+    runTwitter();
+  } else if (command === "spotify-this-song"){
+    runSpotify();
+  } else if (command === "movie-this"){
+    runMovie();
+  } else if (command === "do-what-it-says"){
+    runRandom();
+  } else {
+  
+  };
+
+}
+
+selectFunction();
 

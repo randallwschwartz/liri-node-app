@@ -42,3 +42,28 @@ Language: English, German, Hebrew, Spanish
 Plot: "The Dude" Lebowski, mistaken for a millionaire Lebowski, seeks restitution for his ruined rug and enlists his bowling buddies to help get it.
 Actors: Jeff Bridges, John Goodman, Julianne Moore, Steve Buscemi
 -------------------------
+Number: 1
+Mon Jul 23 01:10:59 +0000 2018
+Enjoying a nice Sunday evening.
+-------------------------
+,Number: 2
+Mon Jul 23 01:10:29 +0000 2018
+Making progress on project.
+-------------------------
+,Number: 3
+Sat Jul 21 02:46:12 +0000 2018
+Just getting started.
+-------------------------
+,Number: 4
+Sat Jul 21 02:45:43 +0000 2018
+Hello.
+-------------------------
+Title: Superman
+Year: 1978
+IMDB Rating: 7.3
+Rotten Tomatoes Rating: undefined
+Country: USA, UK, Panama, Switzerland, Canada
+Language: English
+Plot: An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest superhero.
+Actors: Marlon Brando, Gene Hackman, Christopher Reeve, Ned Beatty
+-------------------------
