@@ -4,3 +4,6 @@
 
 * When the user requests tweets, the application grabs the data, displays the tweets, and writes the tweets to a log.txt file.  When the user requests data for a movie, the application displays the data and writes the data to the log.txt file.  When data is requested for a song, the application displays and writes the song data.  The application can also accept a command from a random.txt file.
 
+## Command Line, Display, and Writing of Data:
+
+![LIRI Gif](./liri.gif)
